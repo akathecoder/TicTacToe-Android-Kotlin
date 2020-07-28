@@ -1,12 +1,13 @@
 package com.example.tictactoe
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_game_screen.*
 
 
 class GameActivity : AppCompatActivity() {
@@ -37,17 +38,20 @@ class GameActivity : AppCompatActivity() {
         playGame(btnID, btnSelected)
     }
 
+    @SuppressLint("SetTextI18n")
     fun playGame(btnId: Int, btnSelected: Button) {
         if (activePlayer == 1) {
             btnSelected.text = "X"
             btnSelected.setBackgroundColor(Color.parseColor("#eeeeee"))
             player1.add(btnId)
             activePlayer = 2
+            nextPlayer.text = "Player 2"
         } else {
             btnSelected.text = "O"
             btnSelected.setBackgroundColor(Color.parseColor("#eeeeee"))
             player2.add(btnId)
             activePlayer = 1
+            nextPlayer.text = "Player 1"
         }
         btnSelected.isEnabled = false
         checkWinner()
